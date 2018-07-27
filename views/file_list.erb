@@ -25,7 +25,17 @@
         <th>Relevant Lines</th>
         <th>Lines covered</th>
         <th>Lines missed</th>
-        <th>Avg. Hits / Line</th>
+        <% if Gem::Version.new(RUBY_VERSION) >= Gem::Version.new("2.5") %>
+          <th>Avg. Hits / Line</th>
+          <th> % branches covered</th>
+          <th>total branches</th>
+          <th>Branches covered</th>
+          <th>Branches missed</th>
+          <th> % methods covered</th>
+          <th>total methods</th>
+          <th>Methods covered</th>
+          <th>Methods missed</th>
+        <% end %>
       </tr>
     </thead>
     <tbody>
@@ -38,6 +48,22 @@
         <td><%= source_file.covered_lines.count %></td>
         <td><%= source_file.missed_lines.count %></td>
         <td><%= source_file.covered_strength %></td>
+
+        <% if Gem::Version.new(RUBY_VERSION) >= Gem::Version.new("2.5") %>
+          <td class="<%= coverage_css_class(source_file.branch_coverage_percent) %> strong"><%= source_file.branch_coverage_percent.round(2).to_s %>
+            %
+          </td>
+          <td><%= source_file.total_branches_count %></td>
+          <td><%= source_file.covered_branches_count %></td>
+          <td><%= source_file.missed_branches_count %></td>
+
+          <td class="<%= coverage_css_class(source_file.methods_coverage_percent) %> strong"><%= source_file.methods_coverage_percent.round(2).to_s %>
+            %
+          </td>
+          <td><%= source_file.total_methods_count %></td>
+          <td><%= source_file.covered_methods_count %></td>
+          <td><%= source_file.missed_methods_count %></td>
+        <% end %>
       </tr>
       <% end %>
     </tbody>
