@@ -26,7 +26,12 @@ module SimpleCov
       end
 
       def output_message(result)
-        "Coverage report generated for #{result.command_name} to #{output_path}. #{result.covered_lines} / #{result.total_lines} LOC (#{result.covered_percent.round(2)}%) covered."
+        message = "Coverage report generated for #{result.command_name} to #{output_path}.\n
+Line Coverage: #{result.covered_lines} / #{result.total_lines} LOC (#{result.covered_percent.round(2)}%)\n"
+        if Gem::Version.new(RUBY_VERSION) >= Gem::Version.new("2.5")
+          message << "Branch Coverage: #{result.covered_branches_count} / #{result.total_branches_count} BOC (#{result.branch_coverage_percent.round(2)}%)"
+        end
+        message
       end
 
     private
