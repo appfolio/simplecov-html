@@ -1583,20 +1583,34 @@ jQuery.url = function()
 
 
 $(document).ready(function() {
+  let aoColumns = [
+    null,
+    { "sType": "percent" },
+    null,
+    null,
+    null,
+    null,
+    null,
+  ];
+  if (document.querySelector('.file_list').getAttribute('data-ruby-version') === 'true') {
+    aoColumns = aoColumns.concat([
+      { "sType": "percent" },
+      null,
+      null,
+      null,
+      { "sType": "percent" },
+      null,
+      null,
+      null
+    ])
+  }
+
   // Configuration for fancy sortable tables for source file groups
   $('.file_list').dataTable({
     "aaSorting": [[ 1, "asc" ]],
     "bPaginate": false,
     "bJQueryUI": true,
-    "aoColumns": [
-      null,
-      { "sType": "percent" },
-      null,
-      null,
-      null,
-      null,
-      null
-    ]
+    "aoColumns": aoColumns
   });
 
   // Syntax highlight all files up front - deactivated

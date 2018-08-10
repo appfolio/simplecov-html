@@ -43,6 +43,9 @@ table
 .dataTables_filter, .dataTables_info
   padding: 2px 6px
 
+.dataTables_wrapper
+  width: fit-content
+
 abbr.timeago
   text-decoration: none
   border: none
@@ -98,8 +101,12 @@ abbr.timeago
       background: -moz-linear-gradient(white, #dddddd)
       background: linear-gradient(white, #dddddd)
 
+.file_list_container
+  overflow: auto
+
 .file_list
   margin-bottom: 18px
+
 
 a.src_link
   background: url('./magnify.png') no-repeat left 50%
@@ -110,11 +117,12 @@ tr, td
   padding: 0
 
 th
-  white-space: nowrap
   &.ui-state-default
     cursor: pointer
   span.ui-icon
     float: left
+  div
+    margin-left: 16px
 
 td
   padding: 4px 8px

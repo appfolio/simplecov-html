@@ -12,29 +12,30 @@
   <a name="<%= title_id %>"></a>
   <div>
     <b><%= source_files.length %></b> files in total.
-    <b><%= source_files.lines_of_code %></b> relevant lines. 
+    <b><%= source_files.lines_of_code %></b> relevant lines.
     <span class="green"><b><%= source_files.covered_lines %></b> lines covered</span> and
     <span class="red"><b><%= source_files.missed_lines %></b> lines missed </span>
   </div>
-  <table class="file_list">
+  <% isRuby25 = Gem::Version.new(RUBY_VERSION) >= Gem::Version.new("2.5") ? "true" : "false" %>
+  <table class="file_list" data-ruby-version=<%=isRuby25%>>
     <thead>
       <tr>
-        <th>File</th>
-        <th>% covered</th>
-        <th>Lines</th>
-        <th>Relevant Lines</th>
-        <th>Lines covered</th>
-        <th>Lines missed</th>
+        <th><div>File</div></th>
+        <th><div>%&nbspCovered</div></th>
+        <th><div>Lines</div></th>
+        <th><div>Relevant Lines</div></th>
+        <th><div>Lines Covered</div></th>
+        <th><div>Lines Missed</div></th>
+        <th><div>Avg.&nbspHits /&nbspLine</div></th>
         <% if Gem::Version.new(RUBY_VERSION) >= Gem::Version.new("2.5") %>
-          <th>Avg. Hits / Line</th>
-          <th> % branches covered</th>
-          <th>total branches</th>
-          <th>Branches covered</th>
-          <th>Branches missed</th>
-          <th> % methods covered</th>
-          <th>total methods</th>
-          <th>Methods covered</th>
-          <th>Methods missed</th>
+          <th><div>%&nbspBranches Covered</div></th>
+          <th><div>Total Branches</div></th>
+          <th><div>Branches Covered</div></th>
+          <th><div>Branches Missed</div></th>
+          <th><div>%&nbspMethods Covered</div></th>
+          <th><div>Total Methods</div></th>
+          <th><div>Methods Covered</div></th>
+          <th><div>Methods Missed</div></th>
         <% end %>
       </tr>
     </thead>
