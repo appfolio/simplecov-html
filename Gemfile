@@ -9,13 +9,11 @@ else
 end
 
 # Use local copy of simplecov in development when checked out, fetch from git otherwise
-# if File.directory?(File.dirname(__FILE__) + "/../simplecov")
-#   gem "simplecov", :path => File.dirname(__FILE__) + "/../simplecov"
-# else
-#   gem "simplecov", :git => "https://github.com/colszowka/simplecov"
-# end
-
-gem 'simplecov', '~> 0.14', path: '/Users/appfolio/src/simplecov'
+if File.directory?(File.dirname(__FILE__) + "/../simplecov")
+  gem "simplecov", :path => File.dirname(__FILE__) + "/../simplecov"
+else
+  gem "simplecov", :git => "https://github.com/colszowka/simplecov"
+end
 
 platforms :ruby_18, :ruby_19 do
   gem "json", "~> 1.8"
