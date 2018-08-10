@@ -16,8 +16,7 @@
     <span class="green"><b><%= source_files.covered_lines %></b> lines covered</span> and
     <span class="red"><b><%= source_files.missed_lines %></b> lines missed </span>
   </div>
-  <% isRuby25 = Gem::Version.new(RUBY_VERSION) >= Gem::Version.new("2.5") ? "true" : "false" %>
-  <table class="file_list" data-ruby-version=<%=isRuby25%>>
+  <table class="file_list" data-ruby-version="<%= Gem::Version.new(RUBY_VERSION) >= Gem::Version.new("2.5") %>">
     <thead>
       <tr>
         <th><div>File</div></th>
